@@ -1,6 +1,6 @@
 {
   "name": "demo-authnft-js-server",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Server library for NFT-based authentication",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/ankitshubham97/authnft-js#readme",
   "devDependencies": {
+    "@types/jsonwebtoken": "^8.5.8",
     "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
@@ -99,6 +100,7 @@
     "@types/web3": "^1.2.2",
     "dotenv": "^16.0.1",
     "ethers": "^5.4.5",
+    "jsonwebtoken": "^8.5.1",
     "tslib": "^2.4.0",
     "web3": "^1.7.4"
   }

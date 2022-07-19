@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "demo-authnft-js-server": "1.0.6",
+    "demo-authnft-js-server": "1.0.7",
     "web3": "^1.7.4"
   },
   "type": "module"
