@@ -1,0 +1,105 @@
+{
+  "name": "demo-authnft-js-server",
+  "version": "1.0.6",
+  "description": "Server library for NFT-based authentication",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "prepublish": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "dev": "cross-env NODE_ENV=development nodemon",
+    "prod": "cross-env NODE_ENV=production nodemon",
+    "start": "node ./dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ankitshubham97/authnft-js.git"
+  },
+  "keywords": [
+    "auth",
+    "nft",
+    "js"
+  ],
+  "author": "Ankit Shubham",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ankitshubham97/authnft-js/issues"
+  },
+  "homepage": "https://github.com/ankitshubham97/authnft-js#readme",
+  "devDependencies": {
+    "eslint": "^7.29.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^6.0.0",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.3.1",
+    "supertest": "^5.0.0",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.7.4"
+  },
+  "eslintConfig": {
+    "env": {
+      "es6": true,
+      "node": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "plugin:@typescript-eslint/recommended",
+      "plugin:prettier/recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2020,
+      "sourceType": "module"
+    },
+    "rules": {
+      "@typescript-eslint/explicit-function-return-type": 0,
+      "@typescript-eslint/explicit-module-boundary-types": 0,
+      "@typescript-eslint/no-non-null-assertion": 0,
+      "@typescript-eslint/ban-ts-comment": 0,
+      "@typescript-eslint/no-unused-vars": [
+        1,
+        {
+          "argsIgnorePattern": "^_"
+        }
+      ]
+    }
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "type-enum": [
+        1,
+        "always",
+        [
+          "build",
+          "chore",
+          "docs",
+          "feat",
+          "fix",
+          "lint",
+          "refactor",
+          "revert",
+          "type"
+        ]
+      ]
+    }
+  },
+  "dependencies": {
+    "@types/web3": "^1.2.2",
+    "dotenv": "^16.0.1",
+    "ethers": "^5.4.5",
+    "tslib": "^2.4.0",
+    "web3": "^1.7.4"
+  }
+}
