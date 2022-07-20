@@ -1,18 +1,21 @@
 interface GetTokenResponse {
     data: GetTokenResponseSuccess | GetTokenResponseFailure
+    code: number
 }
 
 interface GetTokenResponseSuccess {
-    token: string,
+    accessToken: string,
     walletPublicAddress: string,
     nftContractAddress: string,
+    nftId: string,
     iat: number,
     exp: number,
 }
 
 interface GetTokenResponseFailure {
-    message: string,
-    code: number
+    errorCode: string,
+    errorMessage?: string,
+    errorUri?: string,
 }
 
 export default GetTokenResponse;

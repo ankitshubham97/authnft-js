@@ -44,12 +44,6 @@ export default function AuthNft () {
     getDeployedContractAbi: function() {
         return _deployedContractAbi;
     },
-    getWeb3: function() {
-        return _web3;
-    },
-    getSecret: function() {
-        return _secret;
-    },
     getToken: async function (getTokenRequest:GetTokenRequest): Promise<GetTokenResponse> {
       const { nonce, signature, walletPublicAddress, nftContractAddress, nftId } = getTokenRequest;
       try {
@@ -58,36 +52,41 @@ export default function AuthNft () {
         if (signerAddr !== walletPublicAddress) {
           return {
             data: {
-              message: 'Invalid signature',
-              code: 400
-            }
+              errorMessage: 'Invalid signature',
+              errorCode: 'invalid_signature'
+            },
+            code: 400
           };
         }
         // Check if the wallet owns the NFT.
         if (!(await doesWalletOwnNft(_web3, _deployedContractAbi, _deployedContractAddress, walletPublicAddress, nftContractAddress, nftId))) {
           return {
             data: {
-              message: 'Wallet does not own this token',
-              code: 400
-            }
+              errorMessage: 'Invalid NFT',
+              errorCode: 'invalid_nft'
+            },
+            code: 400
           };
         }
         return {
           data: {
-            token: createToken(_secret, getTokenRequest),
+            accessToken: createToken(_secret, getTokenRequest),
             walletPublicAddress,
             nftContractAddress,
+            nftId,
             iat: Date.now(),
             exp: Date.now() + 1000 * 60 * 60 * 24 * 30
-            }
-          };
+          },
+          code: 200
+        };
       } catch (err) {
         console.log(err);
         return {
           data: {
-            message: 'Error verifying signature',
-            code: 500
-          }
+            errorMessage: 'Unknown error',
+            errorCode: 'unknown_error'
+          },
+          code: 500
         };
       }
     },
@@ -101,8 +100,6 @@ export default function AuthNft () {
     }
   };
 }
-
-// class AuthNft {
 
 //   private secret: string;
 //   private web3: Web3;
