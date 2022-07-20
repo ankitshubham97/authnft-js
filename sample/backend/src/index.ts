@@ -1,22 +1,11 @@
-import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
-import authMiddleware from './middleware/auth.middleware';
-import { AbiItem } from 'web3-utils'
-import AuthNft from "demo-authnft-js-server";
-
 import App from './app';
-
-
 import AuthenticationController from './controllers/authentication.controller';
-
 
 dotenv.config();
 
-
 // Setup db connection and then start app
-const app = new App([
-  new AuthenticationController(),
-]);
+const app = new App([new AuthenticationController()]);
 app.listen();
 /*
 const app: Express = express();
