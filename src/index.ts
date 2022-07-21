@@ -39,7 +39,7 @@ function createToken(secret: string, getTokenRequest: GetTokenRequest): string {
 }
 
 export { GetTokenResponseSuccess, GetTokenResponseFailure, GetTokenResponse };
-
+export { JwtAccessTokenPayload };
 export default function AuthNft() {
   let _secret: string;
   let _web3: Web3;

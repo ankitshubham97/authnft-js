@@ -11,14 +11,13 @@ async function authMiddleware(
   if (cookies && cookies.Authorization) {
     const secret = process.env.JWT_SECRET as string;
     try {
-      const verificationResponse = jwt.verify(cookies.Authorization, secret);
-      // TODO: add verification of the NFT.
+      jwt.verify(cookies.Authorization, secret);
       next();
     } catch (error) {
-      next(new HttpException(404, 'error'));
+      next(new HttpException(400, 'Invalid access token'));
     }
   } else {
-    next(new HttpException(404, 'error'));
+    next(new HttpException(400, 'Could not find \'Authorization\' cookie'));
   }
 }
 

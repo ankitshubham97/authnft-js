@@ -1,6 +1,6 @@
 {
   "name": "demo-authnft-js-server",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "Server library for NFT-based authentication",
   "keywords": [
     "auth",

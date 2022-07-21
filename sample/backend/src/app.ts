@@ -6,10 +6,6 @@ import helmet from 'helmet';
 import Controller from './interfaces/controller.interface';
 import errorMiddleware from './middleware/error.middleware';
 
-// import EnvService from './services/env';
-// import logger from './services/logger';
-// import { AUTH_API, STRIPE_HOOK } from './path';
-
 class App {
   public app: express.Application;
 
@@ -22,7 +18,6 @@ class App {
 
   public listen(): void {
     this.app.listen(process.env.PORT, () => {
-      /* istanbul ignore next */
       console.log(`App listening on the port ${process.env.PORT}`);
     });
   }
@@ -43,7 +38,6 @@ class App {
   }
 
   private initializeControllers(controllers: readonly Controller[]) {
-    // All the generic containers as supplied by app
     controllers.forEach((controller) => {
       this.app.use('/', controller.router);
     });

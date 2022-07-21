@@ -8,6 +8,7 @@ import {
   networkEndpoint,
 } from '../constants';
 import authMiddleware from '../middleware/auth.middleware';
+import authByNftMiddleware from '../middleware/authByNft.middleware';
 
 class AuthenticationController implements Controller {
   public router = express.Router();
@@ -25,8 +26,8 @@ class AuthenticationController implements Controller {
 
   private initializeRoutes() {
     this.router.post(`/token`, this.getAccessToken);
-
     this.router.get('/restricted-item', authMiddleware, this.getRestrictedItem);
+    this.router.get('/restricted-item-by-nft', authByNftMiddleware, this.getRestrictedItemByNft);
   }
 
   private getAccessToken = async (
@@ -50,7 +51,6 @@ class AuthenticationController implements Controller {
       return;
     }
     response.status(tokenResponse.code).send(tokenResponse.data);
-    // tokenResponse.code === 200 ? response.cookie('Authorization', tokenResponse.data["accessToken"], { httpOnly: true }).send(tokenResponse.data) : response.status(tokenResponse.code).send(tokenResponse.data);
   };
 
   private getRestrictedItem = async (
@@ -58,6 +58,14 @@ class AuthenticationController implements Controller {
     response: express.Response
   ) => {
     response.send('You are authorized to see this restricted item');
+  };
+
+  
+  private getRestrictedItemByNft = async (
+    express: express.Request,
+    response: express.Response
+  ) => {
+    response.send(`You are authorized to see this restricted item because you own NFT with token id ${express.headers['x-nft-id']} and at contract address ${express.headers['x-nft-contract-address']}`);
   };
 }
 
