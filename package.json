@@ -97,8 +97,6 @@
     "dotenv": "^16.0.1",
     "ethers": "^5.4.5",
     "jsonwebtoken": "^8.5.1",
-    "sort-object-keys": "1.0.0",
-    "sort-package-json": "1.0.0",
     "tslib": "^2.4.0",
     "web3": "^1.7.4"
   },
