@@ -1,5 +1,5 @@
-import SignMessage from "./SignMessage";
-import VerifyMessage from "./VerifyMessage";
+import SignMessage from './SignMessage';
+import VerifyMessage from './VerifyMessage';
 
 export default function App() {
   return (

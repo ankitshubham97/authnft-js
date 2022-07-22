@@ -1,7 +1,7 @@
-import { useState, useRef } from "react";
-import { ethers } from "ethers";
-import ErrorMessage from "./ErrorMessage";
-import SuccessMessage from "./SuccessMessage";
+import { useState, useRef } from 'react';
+import { ethers } from 'ethers';
+import ErrorMessage from './ErrorMessage';
+import SuccessMessage from './SuccessMessage';
 
 const verifyMessage = async ({ message, address, signature }) => {
   try {
@@ -28,15 +28,15 @@ export default function VerifyMessage() {
     setError();
     const isValid = await verifyMessage({
       setError,
-      message: data.get("message"),
-      address: data.get("address"),
-      signature: data.get("signature")
+      message: data.get('message'),
+      address: data.get('address'),
+      signature: data.get('signature'),
     });
 
     if (isValid) {
-      setSuccessMsg("Signature is valid!");
+      setSuccessMsg('Signature is valid!');
     } else {
-      setError("Invalid signature");
+      setError('Invalid signature');
     }
   };
 
