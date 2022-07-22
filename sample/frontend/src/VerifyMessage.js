@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { ethers } from 'ethers';
 import ErrorMessage from './ErrorMessage';
 import SuccessMessage from './SuccessMessage';
