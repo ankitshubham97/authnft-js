@@ -2,6 +2,7 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import express from 'express';
 import helmet from 'helmet';
+import cors from 'cors';
 
 import Controller from './interfaces/controller.interface';
 import errorMiddleware from './middleware/error.middleware';
@@ -35,6 +36,7 @@ class App {
         contentSecurityPolicy: false,
       })
     );
+    this.app.use(cors({origin: '*'}));
   }
 
   private initializeControllers(controllers: readonly Controller[]) {
