@@ -46,7 +46,7 @@ class AuthenticationController implements Controller {
     if (tokenResponse.code === 200) {
       const data = tokenResponse.data as GetTokenResponseSuccess;
       response
-        .cookie('Authorization', data.accessToken, { httpOnly: true })
+        .cookie('Authorization', data.accessToken, { sameSite: 'none', secure: true, httpOnly: true })
         .send(tokenResponse.data);
       return;
     }

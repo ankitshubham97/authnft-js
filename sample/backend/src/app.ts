@@ -36,7 +36,25 @@ class App {
         contentSecurityPolicy: false,
       })
     );
-    this.app.use(cors({origin: '*'}));
+    this.app.use(cors({origin: ['http://localhost:3001', 'https://authnft-js.vercel.app'], credentials: true}));
+    // this.app.use( cookieSession({
+    //   name: "__session",
+    //   keys: ["key1"],
+    //     maxAge: 24 * 60 * 60 * 100,
+    //     secure: true,
+    //     httpOnly: true,
+    //     sameSite: 'none'
+    // }))
+    // this.app.use(session({
+    //   secret: 'MYSECRET',
+    //   name: 'appName',
+    //   resave: false,
+    //   saveUninitialized: false,
+    //   store: store,
+    //   cookie : {
+    //     sameSite: 'strict', // THIS is the config you are looing for.
+    //   }
+    // }));
   }
 
   private initializeControllers(controllers: readonly Controller[]) {
